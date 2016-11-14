@@ -382,7 +382,7 @@ método del teorema del límite central.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#dist_triangular-instance_method" title="#dist_triangular (instance method)">#<strong>dist_triangular</strong>(a = -1,, b = 0, c = 1)  &#x21d2; Numeric </a>
+      <a href="#dist_triangular-instance_method" title="#dist_triangular (instance method)">#<strong>dist_triangular</strong>(minimo = -1,, moda = 0, maximo = 1)  &#x21d2; Numeric </a>
     
 
     
@@ -406,7 +406,7 @@ método del teorema del límite central.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#dist_uniforme-instance_method" title="#dist_uniforme (instance method)">#<strong>dist_uniforme</strong>(a = 0, b = 1)  &#x21d2; Numeric </a>
+      <a href="#dist_uniforme-instance_method" title="#dist_uniforme (instance method)">#<strong>dist_uniforme</strong>(minimo = 0, maximo = 1)  &#x21d2; Numeric </a>
     
 
     
@@ -520,36 +520,30 @@ método del teorema del límite central.</p>
       <pre class="lines">
 
 
+186
+187
+188
+189
+190
+191
 192
 193
 194
 195
 196
 197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207</pre>
+198</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 192</span>
+      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 186</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dist_beta'>dist_beta</span><span class='lparen'>(</span><span class='id identifier rubyid_alfa'>alfa</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_beta'>beta</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_yu'>yu</span> <span class='op'>=</span> <span class='int'>0</span>
   <span class='id identifier rubyid_yv'>yv</span> <span class='op'>=</span> <span class='int'>0</span>
 
   <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_u'>u</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span>
-    <span class='id identifier rubyid_v'>v</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span>
-
-    <span class='id identifier rubyid_yu'>yu</span> <span class='op'>=</span> <span class='id identifier rubyid_u'>u</span> <span class='op'>**</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_fdiv'>fdiv</span><span class='lparen'>(</span><span class='id identifier rubyid_alfa'>alfa</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_yv'>yv</span> <span class='op'>=</span> <span class='id identifier rubyid_v'>v</span> <span class='op'>**</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_fdiv'>fdiv</span><span class='lparen'>(</span><span class='id identifier rubyid_beta'>beta</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_yu'>yu</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span> <span class='op'>**</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_fdiv'>fdiv</span><span class='lparen'>(</span><span class='id identifier rubyid_alfa'>alfa</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_yv'>yv</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span> <span class='op'>**</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_fdiv'>fdiv</span><span class='lparen'>(</span><span class='id identifier rubyid_beta'>beta</span><span class='rparen'>)</span>
 
     <span class='kw'>break</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_yu'>yu</span> <span class='op'>+</span> <span class='id identifier rubyid_yv'>yv</span><span class='rparen'>)</span> <span class='op'>&lt;</span> <span class='int'>1</span>
   <span class='kw'>end</span>
@@ -627,12 +621,12 @@ método del teorema del límite central.</p>
       <pre class="lines">
 
 
-102
-103
-104</pre>
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 102</span>
+      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dist_chi_cuadrado'>dist_chi_cuadrado</span><span class='lparen'>(</span><span class='id identifier rubyid_gr_libertad'>gr_libertad</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
   <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_gr_libertad'>gr_libertad</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_dist_normal_box_muller'>dist_normal_box_muller</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>**</span> <span class='int'>2</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_sum'>sum</span>
@@ -726,12 +720,12 @@ método del teorema del límite central.</p>
       <pre class="lines">
 
 
-133
-134
-135</pre>
+130
+131
+132</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 130</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dist_erlang'>dist_erlang</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_lambdax'>lambdax</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
   <span class='op'>-</span><span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_fdiv'>fdiv</span><span class='lparen'>(</span><span class='id identifier rubyid_lambdax'>lambdax</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='int'>1</span> <span class='op'>-</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_sum'>sum</span>
@@ -906,6 +900,9 @@ método del teorema del límite central.</p>
       <pre class="lines">
 
 
+138
+139
+140
 141
 142
 143
@@ -945,16 +942,10 @@ método del teorema del límite central.</p>
 177
 178
 179
-180
-181
-182
-183
-184
-185
-186</pre>
+180</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 141</span>
+      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 138</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dist_gamma'>dist_gamma</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_lambdax'>lambdax</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span> <span class='op'>==</span> <span class='int'>1</span><span class='rparen'>)</span>
@@ -977,7 +968,7 @@ método del teorema del límite central.</p>
       <span class='kw'>else</span>
         <span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_u'>u</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span> <span class='op'>+</span> <span class='const'>Math</span><span class='op'>::</span><span class='const'>E</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_fdiv'>fdiv</span><span class='lparen'>(</span><span class='const'>Math</span><span class='op'>::</span><span class='const'>E</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>**</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_fdiv'>fdiv</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span><span class='rparen'>)</span>
 
-        <span class='kw'>break</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_exp'>exp</span><span class='lparen'>(</span><span class='op'>-</span><span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_v'>v</span>
+        <span class='kw'>break</span> <span class='kw'>if</span> <span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_exp'>exp</span><span class='lparen'>(</span><span class='op'>-</span><span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_v'>v</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
 
@@ -988,11 +979,8 @@ método del teorema del límite central.</p>
     <span class='id identifier rubyid_ev'>ev</span> <span class='op'>=</span> <span class='int'>0</span>
 
     <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
-      <span class='id identifier rubyid_u'>u</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span>
-      <span class='id identifier rubyid_v'>v</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span>
-
-      <span class='id identifier rubyid_eu'>eu</span> <span class='op'>=</span> <span class='op'>-</span><span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='int'>1</span> <span class='op'>-</span> <span class='id identifier rubyid_u'>u</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_ev'>ev</span> <span class='op'>=</span> <span class='op'>-</span><span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='int'>1</span> <span class='op'>-</span> <span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_eu'>eu</span> <span class='op'>=</span> <span class='op'>-</span><span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='int'>1</span> <span class='op'>-</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_ev'>ev</span> <span class='op'>=</span> <span class='op'>-</span><span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='int'>1</span> <span class='op'>-</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span><span class='rparen'>)</span>
 
       <span class='id identifier rubyid_limite'>limite</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span> <span class='op'>-</span> <span class='int'>1</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_eu'>eu</span> <span class='op'>-</span> <span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_eu'>eu</span><span class='rparen'>)</span> <span class='op'>-</span> <span class='int'>1</span><span class='rparen'>)</span>
 
@@ -1091,18 +1079,18 @@ método del teorema del límite central.</p>
       <pre class="lines">
 
 
-213
-214
-215
-216
-217
-218
-219
-220
-221</pre>
+204
+205
+206
+207
+208
+209
+210
+211
+212</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 213</span>
+      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 204</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dist_laplace'>dist_laplace</span><span class='lparen'>(</span><span class='id identifier rubyid_mu'>mu</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_theta'>theta</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_v'>v</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span> <span class='op'>-</span> <span class='float'>0.5</span>
@@ -1220,19 +1208,19 @@ método del teorema del límite central.</p>
       <pre class="lines">
 
 
+115
+116
+117
 118
 119
 120
 121
 122
 123
-124
-125
-126
-127</pre>
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dist_logaritmica'>dist_logaritmica</span><span class='lparen'>(</span><span class='id identifier rubyid_media'>media</span> <span class='op'>=</span> <span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_varianza'>varianza</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='int'>200</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_num_aleatorios'>num_aleatorios</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span> <span class='rbrace'>}</span>
@@ -1470,10 +1458,7 @@ través del método polar de Marsaglia.</p>
 77
 78
 79
-80
-81
-82
-83</pre>
+80</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 60</span>
@@ -1484,11 +1469,8 @@ través del método polar de Marsaglia.</p>
   <span class='id identifier rubyid_vy'>vy</span> <span class='op'>=</span> <span class='int'>0</span>
 
   <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_ux'>ux</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span>
-    <span class='id identifier rubyid_uy'>uy</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span>
-
-    <span class='id identifier rubyid_vx'>vx</span> <span class='op'>=</span> <span class='int'>2</span> <span class='op'>*</span> <span class='id identifier rubyid_ux'>ux</span> <span class='op'>-</span> <span class='int'>1</span>
-    <span class='id identifier rubyid_vy'>vy</span> <span class='op'>=</span> <span class='int'>2</span> <span class='op'>*</span> <span class='id identifier rubyid_uy'>uy</span> <span class='op'>-</span> <span class='int'>1</span>
+    <span class='id identifier rubyid_vx'>vx</span> <span class='op'>=</span> <span class='int'>2</span> <span class='op'>*</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span> <span class='op'>-</span> <span class='int'>1</span>
+    <span class='id identifier rubyid_vy'>vy</span> <span class='op'>=</span> <span class='int'>2</span> <span class='op'>*</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span> <span class='op'>-</span> <span class='int'>1</span>
 
     <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='id identifier rubyid_vx'>vx</span> <span class='op'>**</span> <span class='int'>2</span> <span class='op'>+</span> <span class='id identifier rubyid_vy'>vy</span> <span class='op'>**</span> <span class='int'>2</span>
 
@@ -1610,16 +1592,16 @@ método del teorema del límite central.</p>
       <pre class="lines">
 
 
+88
+89
+90
 91
 92
 93
-94
-95
-96
-97</pre>
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 88</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dist_normal_tlc'>dist_normal_tlc</span><span class='lparen'>(</span><span class='id identifier rubyid_media'>media</span> <span class='op'>=</span> <span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_varianza'>varianza</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='int'>200</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_num_aleatorios'>num_aleatorios</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span> <span class='rbrace'>}</span>
@@ -1699,12 +1681,12 @@ método del teorema del límite central.</p>
       <pre class="lines">
 
 
-109
-110
-111</pre>
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 109</span>
+      <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dist_student'>dist_student</span><span class='lparen'>(</span><span class='id identifier rubyid_gr_libertad'>gr_libertad</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_dist_normal_box_muller'>dist_normal_box_muller</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='id identifier rubyid_gr_libertad'>gr_libertad</span><span class='period'>.</span><span class='id identifier rubyid_fdiv'>fdiv</span><span class='lparen'>(</span><span class='id identifier rubyid_dist_chi_cuadrado'>dist_chi_cuadrado</span><span class='lparen'>(</span><span class='id identifier rubyid_gr_libertad'>gr_libertad</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1717,7 +1699,7 @@ método del teorema del límite central.</p>
       <div class="method_details ">
   <h3 class="signature " id="dist_triangular-instance_method">
   
-    #<strong>dist_triangular</strong>(a = -1,, b = 0, c = 1)  &#x21d2; <tt>Numeric</tt> 
+    #<strong>dist_triangular</strong>(minimo = -1,, moda = 0, maximo = 1)  &#x21d2; <tt>Numeric</tt> 
   
 
   
@@ -1737,7 +1719,7 @@ método del teorema del límite central.</p>
   
     <li>
       
-        <span class='name'>a</span>
+        <span class='name'>minimo</span>
       
       
         <span class='type'>(<tt>Numeric</tt>)</span>
@@ -1755,7 +1737,7 @@ método del teorema del límite central.</p>
   
     <li>
       
-        <span class='name'>b</span>
+        <span class='name'>moda</span>
       
       
         <span class='type'>(<tt>Numeric</tt>)</span>
@@ -1773,7 +1755,7 @@ método del teorema del límite central.</p>
   
     <li>
       
-        <span class='name'>c</span>
+        <span class='name'>maximo</span>
       
       
         <span class='type'>(<tt>Numeric</tt>)</span>
@@ -1831,15 +1813,15 @@ método del teorema del límite central.</p>
     <td>
       <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 19</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_dist_triangular'>dist_triangular</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span> <span class='op'>=</span> <span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_dist_triangular'>dist_triangular</span><span class='lparen'>(</span><span class='id identifier rubyid_minimo'>minimo</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_moda'>moda</span> <span class='op'>=</span> <span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_maximo'>maximo</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_u'>u</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span>
 
-  <span class='id identifier rubyid_limite'>limite</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_b'>b</span> <span class='op'>-</span> <span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_fdiv'>fdiv</span><span class='lparen'>(</span><span class='id identifier rubyid_c'>c</span> <span class='op'>-</span> <span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_limite'>limite</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_moda'>moda</span> <span class='op'>-</span> <span class='id identifier rubyid_minimo'>minimo</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_fdiv'>fdiv</span><span class='lparen'>(</span><span class='id identifier rubyid_maximo'>maximo</span> <span class='op'>-</span> <span class='id identifier rubyid_minimo'>minimo</span><span class='rparen'>)</span>
 
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_u'>u</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_limite'>limite</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_a'>a</span> <span class='op'>+</span> <span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='id identifier rubyid_u'>u</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_b'>b</span> <span class='op'>-</span> <span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_c'>c</span> <span class='op'>-</span> <span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_limite'>limite</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_u'>u</span>
+    <span class='id identifier rubyid_minimo'>minimo</span> <span class='op'>+</span> <span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='id identifier rubyid_u'>u</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_moda'>moda</span> <span class='op'>-</span> <span class='id identifier rubyid_minimo'>minimo</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_maximo'>maximo</span> <span class='op'>-</span> <span class='id identifier rubyid_minimo'>minimo</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_c'>c</span> <span class='op'>-</span> <span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='int'>1</span> <span class='op'>-</span> <span class='id identifier rubyid_u'>u</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_c'>c</span> <span class='op'>-</span> <span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_c'>c</span> <span class='op'>-</span> <span class='id identifier rubyid_b'>b</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_maximo'>maximo</span> <span class='op'>-</span> <span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='int'>1</span> <span class='op'>-</span> <span class='id identifier rubyid_u'>u</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_maximo'>maximo</span> <span class='op'>-</span> <span class='id identifier rubyid_minimo'>minimo</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='id identifier rubyid_maximo'>maximo</span> <span class='op'>-</span> <span class='id identifier rubyid_moda'>moda</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1850,7 +1832,7 @@ método del teorema del límite central.</p>
       <div class="method_details ">
   <h3 class="signature " id="dist_uniforme-instance_method">
   
-    #<strong>dist_uniforme</strong>(a = 0, b = 1)  &#x21d2; <tt>Numeric</tt> 
+    #<strong>dist_uniforme</strong>(minimo = 0, maximo = 1)  &#x21d2; <tt>Numeric</tt> 
   
 
   
@@ -1870,7 +1852,7 @@ método del teorema del límite central.</p>
   
     <li>
       
-        <span class='name'>a</span>
+        <span class='name'>minimo</span>
       
       
         <span class='type'>(<tt>Numeric</tt>)</span>
@@ -1888,7 +1870,7 @@ método del teorema del límite central.</p>
   
     <li>
       
-        <span class='name'>b</span>
+        <span class='name'>maximo</span>
       
       
         <span class='type'>(<tt>Numeric</tt>)</span>
@@ -1938,8 +1920,8 @@ método del teorema del límite central.</p>
     <td>
       <pre class="code"><span class="info file"># File 'src/aleatorio_continuo.rb', line 10</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_dist_uniforme'>dist_uniforme</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span> <span class='op'>=</span> <span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_a'>a</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='id identifier rubyid_b'>b</span> <span class='op'>-</span> <span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_dist_uniforme'>dist_uniforme</span><span class='lparen'>(</span><span class='id identifier rubyid_minimo'>minimo</span> <span class='op'>=</span> <span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_maximo'>maximo</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_minimo'>minimo</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='id identifier rubyid_maximo'>maximo</span> <span class='op'>-</span> <span class='id identifier rubyid_minimo'>minimo</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1951,7 +1933,7 @@ método del teorema del límite central.</p>
 </div>
 
       <div id="footer">
-  Generated on Sun Nov 13 18:55:58 2016 by
+  Generated on Mon Nov 14 01:47:25 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.3.1).
 </div>

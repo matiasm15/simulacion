@@ -4,6 +4,7 @@ Son algunos temas que se vieron en la catedra de Simulación. Todos los algoritm
 
 ### Montecarlo
 Aproximación de integrales mediante el método de Montecarlo.
+
 * Integrales con límites inferior y superior finitos
 * Integrales con límite inferior finito y límite superior infinito
 * Integrales con límite inferior infinito y límite superior finito
@@ -11,6 +12,7 @@ Aproximación de integrales mediante el método de Montecarlo.
 
 ### Valores aleatorios continuos
 Generación de valores aleatorios continuos pertenecientes a distintas distribuciones.
+
 * Uniforme
 * Triangular
 * Exponencial
@@ -27,6 +29,7 @@ Generación de valores aleatorios continuos pertenecientes a distintas distribuc
 
 ### Valores aleatorios continuos
 Generación de valores aleatorios discretos pertenecientes a distintas distribuciones.
+
 * Geométrica
 * Binomial negativa
 * Binomial

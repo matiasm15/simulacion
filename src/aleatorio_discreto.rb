@@ -18,9 +18,7 @@ module VADiscreto
   # @param prob_exito [Numeric] probabilidad de éxito de cada ensayo
   # @return [Integer] cantidad de fracasos
   def dist_binomial_negativa(exitos, prob_exito)
-    log_num_aleatorios = Array.new(exitos) { Math::log(SecureRandom.random_number) }
-
-    log_num_aleatorios.map { |x| x.fdiv(Math::log(1 - prob_exito)).floor }.sum
+    Array.new(exitos) { dist_geometrica(prob_exito) }.sum
   end
 
   # Genera valores discretos aleatorios en base a una distribución binomial de la cantidad de
@@ -42,13 +40,13 @@ module VADiscreto
     var_aleatoria = 0
     productoria = SecureRandom.random_number
 
-    loop do
-      return var_aleatoria if limite > productoria
-
+    while limite < productoria
       var_aleatoria += 1
 
       productoria *= SecureRandom.random_number
     end
+
+    var_aleatoria
   end
 
   # Genera valores discretos aleatorios en base a una distribución hipergeométrica de una

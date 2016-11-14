@@ -189,7 +189,7 @@ class TestAleatorioContinuo < Minitest::Test
     mu = 3.25
     theta = 4.75
 
-    data = Array.new(@iteraciones_reducidas) { dist_laplace(mu, theta) }
+    data = Array.new(@iteraciones) { dist_laplace(mu, theta) }
 
     media = mu
     varianza = 2 * theta ** 2

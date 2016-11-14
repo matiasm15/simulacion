@@ -4,27 +4,27 @@ require 'descriptive_statistics'
 # Generación de valores aleatorios continuos mediante distintas distribuciones.
 module VAContinuo
   # Genera valores aleatorios en base a una distribución uniforme.
-  # @param a [Numeric] valor mínimo de la distribución
-  # @param b [Numeric] valor máximo de la distribución
+  # @param minimo [Numeric] valor mínimo de la distribución
+  # @param maximo [Numeric] valor máximo de la distribución
   # @return [Numeric] valor perteneciente a la distribución
-  def dist_uniforme(a = 0, b = 1)
-    a + (b - a) * SecureRandom.random_number
+  def dist_uniforme(minimo = 0, maximo = 1)
+    minimo + (maximo - minimo) * SecureRandom.random_number
   end
 
   # Genera valores aleatorios en base a una distribución triangular.
-  # @param a [Numeric] valor mínimo de la distribución
-  # @param b [Numeric] moda de la distribución
-  # @param c [Numeric] valor máximo de la distribución
+  # @param minimo [Numeric] valor mínimo de la distribución
+  # @param moda [Numeric] moda de la distribución
+  # @param maximo [Numeric] valor máximo de la distribución
   # @return [Numeric] valor perteneciente a la distribución
-  def dist_triangular(a = -1, b = 0, c = 1)
+  def dist_triangular(minimo = -1, moda = 0, maximo = 1)
     u = SecureRandom.random_number
 
-    limite = (b - a).fdiv(c - a)
+    limite = (moda - minimo).fdiv(maximo - minimo)
 
-    if (u < limite)
-      a + Math::sqrt(u * (b - a) * (c - a))
+    if limite > u
+      minimo + Math::sqrt(u * (moda - minimo) * (maximo - minimo))
     else
-      c - Math::sqrt((1 - u) * (c - a) * (c - b))
+      maximo - Math::sqrt((1 - u) * (maximo - minimo) * (maximo - moda))
     end
   end
 
@@ -63,11 +63,8 @@ module VAContinuo
     vy = 0
 
     loop do
-      ux = SecureRandom.random_number
-      uy = SecureRandom.random_number
-
-      vx = 2 * ux - 1
-      vy = 2 * uy - 1
+      vx = 2 * SecureRandom.random_number - 1
+      vy = 2 * SecureRandom.random_number - 1
 
       s = vx ** 2 + vy ** 2
 
@@ -159,7 +156,7 @@ module VAContinuo
         else
           y = (u * (k + Math::E).fdiv(Math::E)) ** 1.fdiv(k)
 
-          break if (Math::exp(-y)) > v
+          break if Math::exp(-y) > v
         end
       end
 
@@ -170,11 +167,8 @@ module VAContinuo
       ev = 0
 
       loop do
-        u = SecureRandom.random_number
-        v = SecureRandom.random_number
-
-        eu = -Math::log(1 - u)
-        ev = -Math::log(1 - v)
+        eu = -Math::log(1 - SecureRandom.random_number)
+        ev = -Math::log(1 - SecureRandom.random_number)
 
         limite = (k - 1) * (eu - Math::log(eu) - 1)
 
@@ -194,11 +188,8 @@ module VAContinuo
     yv = 0
 
     loop do
-      u = SecureRandom.random_number
-      v = SecureRandom.random_number
-
-      yu = u ** 1.fdiv(alfa)
-      yv = v ** 1.fdiv(beta)
+      yu = SecureRandom.random_number ** 1.fdiv(alfa)
+      yv = SecureRandom.random_number ** 1.fdiv(beta)
 
       break if (yu + yv) < 1
     end
