@@ -22,9 +22,9 @@ module VAContinuo
     limite = (moda - minimo).fdiv(maximo - minimo)
 
     if limite > u
-      minimo + Math::sqrt(u * (moda - minimo) * (maximo - minimo))
+      minimo + Math.sqrt(u * (moda - minimo) * (maximo - minimo))
     else
-      maximo - Math::sqrt((1 - u) * (maximo - minimo) * (maximo - moda))
+      maximo - Math.sqrt((1 - u) * (maximo - minimo) * (maximo - moda))
     end
   end
 
@@ -32,7 +32,7 @@ module VAContinuo
   # @param lambdax [Numeric] parámetro lambda de la distribución
   # @return [Numeric] valor perteneciente a la distribución
   def dist_exponencial(lambdax = 1)
-    -1.fdiv(lambdax) * Math::log(1 - SecureRandom.random_number)
+    -1.fdiv(lambdax) * Math.log(1 - SecureRandom.random_number)
   end
 
   # Genera un par de valores aleatorios en base a una distribución normal a través del
@@ -44,12 +44,12 @@ module VAContinuo
     u = SecureRandom.random_number
     v = SecureRandom.random_number
 
-    raiz = Math::sqrt(-2 * Math::log(u))
+    raiz = Math.sqrt(-2 * Math.log(u))
 
-    normal_estandar_x = raiz * Math::cos(2 * Math::PI * v)
-    normal_estandar_y = raiz * Math::sin(2 * Math::PI * v)
+    normal_estandar_x = raiz * Math.cos(2 * Math::PI * v)
+    normal_estandar_y = raiz * Math.sin(2 * Math::PI * v)
 
-    [media + Math::sqrt(varianza) * normal_estandar_x, media + Math::sqrt(varianza) * normal_estandar_y]
+    [media + Math.sqrt(varianza) * normal_estandar_x, media + Math.sqrt(varianza) * normal_estandar_y]
   end
 
   # Genera un par de valores aleatorios en base a una distribución normal a través del
@@ -71,12 +71,12 @@ module VAContinuo
       break if s < 1
     end
 
-    raiz = Math::sqrt( (-2 * Math::log(s)).fdiv(s) )
+    raiz = Math.sqrt( (-2 * Math.log(s)).fdiv(s) )
 
     normal_estandar_x = vx * raiz
     normal_estandar_y = vy * raiz
 
-    [media + Math::sqrt(varianza) * normal_estandar_x, media + Math::sqrt(varianza) * normal_estandar_y]
+    [media + Math.sqrt(varianza) * normal_estandar_x, media + Math.sqrt(varianza) * normal_estandar_y]
   end
 
   # Genera valores aleatorios en base a una distribución normal a través del método del
@@ -88,9 +88,9 @@ module VAContinuo
   def dist_normal_tlc(media = 0, varianza = 1, n = 200)
     num_aleatorios = Array.new(n) { SecureRandom.random_number }
 
-    normal_estandar = (num_aleatorios.sum - n.fdiv(2)) * Math::sqrt(12.fdiv(n))
+    normal_estandar = (num_aleatorios.sum - n.fdiv(2)) * Math.sqrt(12.fdiv(n))
 
-    media + Math::sqrt(varianza) * normal_estandar
+    media + Math.sqrt(varianza) * normal_estandar
   end
 
   # Genera valores aleatorios en base a una distribución chi cuadrado (X^2).
@@ -104,7 +104,7 @@ module VAContinuo
   # @param gr_libertad [Integer] grados de libertad de la distribución
   # @return [Numeric] valor perteneciente a la distribución
   def dist_student(gr_libertad = 1)
-    dist_normal_box_muller[0] * Math::sqrt(gr_libertad.fdiv(dist_chi_cuadrado(gr_libertad)))
+    dist_normal_box_muller[0] * Math.sqrt(gr_libertad.fdiv(dist_chi_cuadrado(gr_libertad)))
   end
 
   # Genera valores aleatorios en base a una distribución logarítmica.
@@ -115,12 +115,12 @@ module VAContinuo
   def dist_logaritmica(media = 0, varianza = 1, n = 200)
     num_aleatorios = Array.new(n) { SecureRandom.random_number }
 
-    normal_estandar = (num_aleatorios.sum - n.fdiv(2)) * Math::sqrt(12.fdiv(n))
+    normal_estandar = (num_aleatorios.sum - n.fdiv(2)) * Math.sqrt(12.fdiv(n))
 
-    varianza_y = Math::log(1 + varianza.fdiv(media ** 2))
-    media_y = Math::log(media) - varianza_y.fdiv(2)
+    varianza_y = Math.log(1 + varianza.fdiv(media ** 2))
+    media_y = Math.log(media) - varianza_y.fdiv(2)
 
-    Math::exp(media_y + Math::sqrt(varianza_y) * normal_estandar)
+    Math.exp(media_y + Math.sqrt(varianza_y) * normal_estandar)
   end
 
   # Genera valores aleatorios en base a una distribución de Erlang.
@@ -128,7 +128,7 @@ module VAContinuo
   # @param lambdax [Numeric] parámetro lambda de la distribución
   # @return [Numeric] valor perteneciente a la distribución
   def dist_erlang(k = 1, lambdax = 1)
-    -1.fdiv(lambdax) * Array.new(k) { Math::log(1 - SecureRandom.random_number) }.sum
+    -1.fdiv(lambdax) * Array.new(k) { Math.log(1 - SecureRandom.random_number) }.sum
   end
 
   # Genera valores aleatorios en base a una distribución gamma.
@@ -150,13 +150,13 @@ module VAContinuo
         limite = Math::E.fdiv(Math::E + k)
 
         if u > limite
-          y = -Math::log((1 - u) * (Math::E + k).fdiv(Math::E * k))
+          y = -Math.log((1 - u) * (Math::E + k).fdiv(Math::E * k))
 
           break if (y ** (k - 1)) > v
         else
           y = (u * (k + Math::E).fdiv(Math::E)) ** 1.fdiv(k)
 
-          break if Math::exp(-y) > v
+          break if Math.exp(-y) > v
         end
       end
 
@@ -167,10 +167,10 @@ module VAContinuo
       ev = 0
 
       loop do
-        eu = -Math::log(1 - SecureRandom.random_number)
-        ev = -Math::log(1 - SecureRandom.random_number)
+        eu = -Math.log(1 - SecureRandom.random_number)
+        ev = -Math.log(1 - SecureRandom.random_number)
 
-        limite = (k - 1) * (eu - Math::log(eu) - 1)
+        limite = (k - 1) * (eu - Math.log(eu) - 1)
 
         break if ev > limite
       end
@@ -205,9 +205,9 @@ module VAContinuo
     v = SecureRandom.random_number - 0.5
 
     if v > 0
-      mu - theta * Math::log(1 - 2 * v.abs)
+      mu - theta * Math.log(1 - 2 * v.abs)
     else
-      mu + theta * Math::log(1 - 2 * v.abs)
+      mu + theta * Math.log(1 - 2 * v.abs)
     end
   end
 end

@@ -516,7 +516,7 @@ Bernoulli.</p>
       <pre class="code"><span class="info file"># File 'src/aleatorio_discreto.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dist_geometrica'>dist_geometrica</span><span class='lparen'>(</span><span class='id identifier rubyid_prob_exito'>prob_exito</span><span class='rparen'>)</span>
-  <span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_fdiv'>fdiv</span><span class='lparen'>(</span><span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='int'>1</span> <span class='op'>-</span> <span class='id identifier rubyid_prob_exito'>prob_exito</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_floor'>floor</span>
+  <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_fdiv'>fdiv</span><span class='lparen'>(</span><span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='int'>1</span> <span class='op'>-</span> <span class='id identifier rubyid_prob_exito'>prob_exito</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_floor'>floor</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -728,7 +728,7 @@ de una cierta cantidad de ocurrencias de un evento.</p>
       <pre class="code"><span class="info file"># File 'src/aleatorio_discreto.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dist_poisson'>dist_poisson</span><span class='lparen'>(</span><span class='id identifier rubyid_lambdax'>lambdax</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_limite'>limite</span> <span class='op'>=</span> <span class='const'>Math</span><span class='op'>::</span><span class='id identifier rubyid_exp'>exp</span><span class='lparen'>(</span><span class='op'>-</span><span class='id identifier rubyid_lambdax'>lambdax</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_limite'>limite</span> <span class='op'>=</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_exp'>exp</span><span class='lparen'>(</span><span class='op'>-</span><span class='id identifier rubyid_lambdax'>lambdax</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_var_aleatoria'>var_aleatoria</span> <span class='op'>=</span> <span class='int'>0</span>
   <span class='id identifier rubyid_productoria'>productoria</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_random_number'>random_number</span>
@@ -751,7 +751,7 @@ de una cierta cantidad de ocurrencias de un evento.</p>
 </div>
 
       <div id="footer">
-  Generated on Mon Nov 14 01:47:25 2016 by
+  Generated on Sat Dec 24 04:51:07 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.3.1).
 </div>

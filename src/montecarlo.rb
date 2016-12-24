@@ -35,7 +35,7 @@ module Montecarlo
     imagen = (1..n).map do |i|
       u = SecureRandom.random_number
 
-      argumento = a - Math::log(u)
+      argumento = a - Math.log(u)
 
       funcion.call(argumento).fdiv(u)
     end
@@ -55,7 +55,7 @@ module Montecarlo
     imagen = (1..n).map do |i|
       u = SecureRandom.random_number
 
-      argumento = b + Math::log(u)
+      argumento = b + Math.log(u)
 
       funcion.call(argumento).fdiv(u)
     end
@@ -74,9 +74,9 @@ module Montecarlo
     imagen = (1..n).map do |i|
       u = SecureRandom.random_number
 
-      argumento = Math::tan(Math::PI * u - Math::PI.fdiv(2))
+      argumento = Math.tan(Math::PI * u - Math::PI.fdiv(2))
 
-      funcion.call(argumento) * Math::PI.fdiv(Math::cos(Math::PI * u - Math::PI.fdiv(2)) ** 2)
+      funcion.call(argumento) * Math::PI.fdiv(Math.cos(Math::PI * u - Math::PI.fdiv(2)) ** 2)
     end
 
     imagen.sum.fdiv(n)

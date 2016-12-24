@@ -8,7 +8,7 @@ module VADiscreto
   # @param prob_exito [Numeric] probabilidad de éxito de cada ensayo
   # @return [Integer] cantidad de fracasos
   def dist_geometrica(prob_exito)
-    Math::log(SecureRandom.random_number).fdiv(Math::log(1 - prob_exito)).floor
+    Math.log(SecureRandom.random_number).fdiv(Math.log(1 - prob_exito)).floor
   end
 
   # Genera valores discretos aleatorios en base a una distribución binomial negativa de la
@@ -35,7 +35,7 @@ module VADiscreto
   # @param lambdax [Numeric] parámetro lambda de la distribución
   # @return [Integer] cantidad de ocurrencias del evento
   def dist_poisson(lambdax)
-    limite = Math::exp(-lambdax)
+    limite = Math.exp(-lambdax)
 
     var_aleatoria = 0
     productoria = SecureRandom.random_number
